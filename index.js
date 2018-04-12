@@ -3,7 +3,8 @@ const { spawn } = require('child_process');
 // });
 
 // execFile: executes a file with the specified arguments
-const filename = __dirname + '/test.sh'
+const path = require('path');
+const filename = path.join(__dirname, 'test.sh');
 const ls = spawn('sh', [ filename ], {
 	stdio: 'inherit',
   shell: true
