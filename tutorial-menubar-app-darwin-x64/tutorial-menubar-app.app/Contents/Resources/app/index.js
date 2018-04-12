@@ -1,13 +1,3 @@
-const { execFile } = require('child_process');
-// exec('sh ./test.sh', function(error, stdout, stderr) {
-// });
-
-// execFile: executes a file with the specified arguments
-execFile('sh', ['test.sh'], function(error, stdout, stderr){
-	console.log(stdout);
-});
-
-
 const {ipcRenderer} = require('electron')
 const {fs} = require('fs');
 
@@ -20,7 +10,7 @@ document.addEventListener('DOMContentLoaded', () => {
   n.onclick = () => {
     const { spawn } = require('child_process')
 
-    const ls = spawn('sh', [ 'test.sh' ])
+    const ls = spawn('bash', [ __dirname + '/test.sh' ])
 
     ls.stdout.on('data', (data) => {
       console.log(`stdout: ${data}`);
