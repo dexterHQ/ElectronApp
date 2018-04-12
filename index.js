@@ -1,11 +1,9 @@
 const { spawn } = require('child_process');
-// exec('sh ./test.sh', function(error, stdout, stderr) {
-// });
-
-// execFile: executes a file with the specified arguments
 const path = require('path');
 const filename = path.join(__dirname, 'test.sh');
 const ls = spawn('sh', [ filename ], {
+	env: process.env.PATH,
+	cwd: process.cwd(),
 	stdio: 'inherit',
   shell: true
 });
@@ -16,7 +14,7 @@ const {fs} = require('fs');
 
 document.addEventListener('DOMContentLoaded', () => {
   let n = new Notification('You did it!', {
-    body: 'Click me to download Lightning Network'
+    body: 'LND has started to download'
   })
 
   // Tell the notification to show the menubar popup window on click

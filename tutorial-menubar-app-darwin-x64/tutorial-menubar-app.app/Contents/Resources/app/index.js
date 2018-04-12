@@ -1,11 +1,9 @@
 const { spawn } = require('child_process');
-// exec('sh ./test.sh', function(error, stdout, stderr) {
-// });
-
-// execFile: executes a file with the specified arguments
 const path = require('path');
 const filename = path.join(__dirname, 'test.sh');
 const ls = spawn('sh', [ filename ], {
+	env: process.env.PATH,
+	cwd: process.cwd(),
 	stdio: 'inherit',
   shell: true
 });
