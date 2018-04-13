@@ -1,13 +1,3 @@
-const { spawn } = require('child_process');
-const path = require('path');
-const filename = path.join(__dirname, 'test.sh');
-const ls = spawn('sh', [ filename ], {
-	env: process.env.PATH,
-	cwd: process.cwd(),
-	stdio: 'inherit',
-  shell: true
-});
-
 
 const {ipcRenderer} = require('electron')
 const {fs} = require('fs');
@@ -24,15 +14,15 @@ document.addEventListener('DOMContentLoaded', () => {
     // const ls = spawn('sh', [ 'test.sh' ])
 		//
     // ls.stdout.on('data', (data) => {
-    //   console.log(`stdout: ${data}`);
+    //   console.log(`stdout: ${data}`);
     // });
 		//
     // ls.stderr.on('data', (data) => {
-    //   console.log(`stderr: ${data}`);
+    //   console.log(`stderr: ${data}`);
     // });
 		//
     // ls.on('close', (code) => {
-    //   console.log(`child process exited with code ${code}`);
+    //   console.log(`child process exited with code ${code}`);
     // });
     ipcRenderer.send('show-window')
   }

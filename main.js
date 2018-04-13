@@ -17,7 +17,6 @@ app.on('ready', () => {
   // our popup window
   tray.on('click', function(event) {
     toggleWindow()
-
     // Show devtools when command clicked
     if (window.isVisible() && process.defaultApp && event.metaKey) {
       window.openDevTools({mode: 'detach'})
@@ -26,12 +25,14 @@ app.on('ready', () => {
 
   // Make the popup window for the menubar
   window = new BrowserWindow({
-    width: 300,
-    height: 350,
+    width: 1000,
+    height: 1200,
     show: false,
     frame: false,
     resizable: false,
   })
+  window.openDevTools()
+  // theWindow.openDevTools()
 
   // Tell the popup window to load our index.html file
   window.loadURL(`file://${path.join(__dirname, 'index.html')}`)
@@ -72,6 +73,9 @@ const showWindow = () => {
 
 ipcMain.on('show-window', () => {
   showWindow()
+  console.log(__dirname)
+  const filename = path.join(__dirname, 'start_node.sh');
+  console.log(filename)
 })
 
 app.on('window-all-closed', () => {
